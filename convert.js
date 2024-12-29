@@ -1,9 +1,9 @@
 const fs = require("fs");
 
-// Đọc file .txt
+//read
 const rawData = fs.readFileSync("dictionary.txt", "utf-8");
 
-// Xử lý file thành JSON
+// process
 const words = rawData.split("@").slice(1).map((entry) => {
   const lines = entry.trim().split("\n");
   const wordLine = lines[0].split(" ");
@@ -13,6 +13,6 @@ const words = rawData.split("@").slice(1).map((entry) => {
   return { word, ipa, definition };
 });
 
-// Ghi ra file JSON
+// write
 fs.writeFileSync("data.json", JSON.stringify(words, null, 2));
 console.log("Chuyển đổi hoàn tất! File được lưu dưới tên data.json");
